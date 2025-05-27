@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+
+<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.parking.AltaController"
+      styleClass="contenedor">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+
+    <Label text="Tipo de vehiculo:" styleClass="label"/>
+
+    <HBox alignment="CENTER" spacing="10.0">
+        <RadioButton fx:id="vOficialRB" text="Oficial" styleClass="radio"/>
+        <RadioButton fx:id="vResidenteRB" text="Residente" styleClass="radio"/>
+    </HBox>
+
+    <Label text="Matricula:" contentDisplay="RIGHT" styleClass="label">
+        <graphic>
+            <TextField fx:id="matriculaTF" promptText="1111-AAA" styleClass="campo-texto"/>
+        </graphic>
+    </Label>
+
+    <Button text="Dar de alta" onAction="#darDeAlta" styleClass="boton-menu"/>
+</VBox>

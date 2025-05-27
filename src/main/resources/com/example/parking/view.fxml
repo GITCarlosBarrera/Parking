@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ComboBox?>
+
+<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.parking.Controller"
+      stylesheets="@style.css">
+
+    <HBox fx:id="topBar" alignment="CENTER" spacing="5.0" styleClass="barra-superior">
+        <VBox alignment="CENTER" spacing="2.0">
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+            </padding>
+            <Label text="480 PARKING" styleClass="titulo"/>
+            <Label fx:id="horaLabel" styleClass="reloj"/>
+        </VBox>
+    </HBox>
+
+
+    <HBox alignment="CENTER" spacing="40.0">
+        <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+        </padding>
+        <VBox alignment="CENTER" spacing="15.0">
+            <Button text="Registrar Entrada" onAction="#abrirRegistrarEntrada" styleClass="boton-menu"/>
+            <Button text="Registrar Salida" onAction="#abrirRegistrarSalida" styleClass="boton-menu"/>
+            <Button text="Dar de alta" onAction="#abrirAlta" styleClass="boton-menu"/>
+            <Button text="Comienza mes" onAction="#comenzarMes" styleClass="boton-menu"/>
+            <Button text="Pagos de residentes" onAction="#mostrarPagosResidentes" styleClass="boton-menu"/>
+        </VBox>
+        <VBox alignment="CENTER" spacing="10.0">
+            <ComboBox fx:id="listaVehiculosCB" onAction="#cambiarLista" styleClass="combo"/>
+            <ListView fx:id="vehiculosRegistradosLV" styleClass="listview" prefWidth="335" prefHeight="500"/>
+            <ListView fx:id="tiempoVehiculosLV" styleClass="listview" prefWidth="335" prefHeight="500"/>
+            <Button fx:id="eliminarButton" text="Eliminar" onAction="#eliminarVehiculo" id="eliminar"/>
+        </VBox>
+    </HBox>
+</VBox>

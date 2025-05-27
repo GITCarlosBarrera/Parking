@@ -1,0 +1,160 @@
+.root {
+    -fx-font-family: "Segoe UI", "Roboto", "Arial", sans-serif;
+    -fx-background-color: #1e1f22;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+}
+
+.barra-superior {
+    -fx-background-color: #000000;
+    -fx-pref-height: 70px;
+    -fx-alignment: center;
+    -fx-max-width: infinity;
+}
+
+.label.titulo {
+    -fx-font-size: 28px;
+    -fx-text-fill: #39fe90;
+}
+
+.label.reloj {
+    -fx-font-size: 16px;
+    -fx-text-fill: #00fafd;
+    -fx-padding: 0 0 0 0;
+}
+
+.button.boton-menu {
+    -fx-background-color: #2b2d30;
+    -fx-text-fill: #39fe90;
+    -fx-font-size: 14px;
+    -fx-padding: 8 20;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-border-color: #39fe90;
+    -fx-border-width: 3;
+    -fx-pref-width: 180px;
+}
+
+.button.boton-menu:hover {
+    -fx-background-color: #39fe90;
+    -fx-text-fill: #2b2d30;
+}
+
+#eliminar {
+    -fx-background-color: #2b2d30, #ff4950;
+    -fx-text-fill: #2b2d30;
+    -fx-background-radius: 8;
+    -fx-padding: 8 20;
+    -fx-pref-width: 160px;
+    -fx-pref-height: 40px;
+}
+
+#eliminar:hover {
+    -fx-background-color: #ff8085;
+}
+
+.combo-box.combo {
+    -fx-background-color: #2b2d30;
+    -fx-border-radius: 8;
+    -fx-border-color: #39fe90;
+    -fx-border-width: 3;
+    -fx-background-radius: 6;
+    -fx-font-size: 14px;
+    -fx-padding: 4;
+}
+
+.combo-box .label {
+    -fx-text-fill: #39fe90;
+}
+
+.combo-box .list-cell {
+    -fx-text-fill: #39fe90;
+    -fx-background-color: #2b2d30;
+}
+
+.combo-box .list-cell:hover {
+    -fx-background-color: #e5e5e5;
+}
+
+.listview {
+    -fx-border-radius: 8;
+    -fx-border-color: #39fe90;
+    -fx-border-width: 3;
+    -fx-background-radius: 6;
+    -fx-background-color: #2b2d30;
+    -fx-padding: 5;
+    -fx-font-size: 13px;
+    -fx-text-fill: #39fe90;
+}
+
+.listview .list-cell {
+    -fx-text-fill: white;
+}
+
+.listview .list-cell:even {
+    -fx-background-color: #3a3a3a;
+}
+
+.listview .list-cell:odd {
+    -fx-background-color: #4f4f4f;
+}
+
+.listview .list-cell:selected {
+    -fx-background-color: #39fe90;
+    -fx-text-fill: #1e1f22;
+}
+
+.listview .scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-pref-width: 12px;
+}
+
+.listview .scroll-bar:vertical .thumb {
+    -fx-background-color: #4f4f4f;
+    -fx-background-radius: 6;
+}
+
+.listview .scroll-bar:vertical .track {
+    -fx-background-color: #2b2d30;
+    -fx-background-radius: 6;
+}
+
+.listview .scroll-bar:horizontal {
+    -fx-background-color: transparent;
+    -fx-pref-height: 12px;
+}
+
+.listview .scroll-bar:horizontal .thumb {
+    -fx-background-color: #4f4f4f;
+    -fx-background-radius: 6;
+}
+
+.listview .scroll-bar:horizontal .track {
+    -fx-background-color: #2b2d30;
+    -fx-background-radius: 6;
+}
+
+.listview .scroll-bar .thumb:hover {
+    -fx-background-color: #2fffac;
+}
+
+.text-field.campo-texto {
+    -fx-background-color: #2b2d30;
+    -fx-text-fill: #ffffff;
+    -fx-border-color: #39fe90;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-font-size: 13px;
+    -fx-padding: 6;
+}
+
+.radio {
+    -fx-text-fill: #ffffff;
+}
+
+.label {
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+}
+
+
