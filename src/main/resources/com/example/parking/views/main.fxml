@@ -9,8 +9,8 @@
 <?import javafx.scene.control.ComboBox?>
 
 <VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.parking.Controller"
-      stylesheets="@style.css">
+      fx:controller="com.example.parking.controllers.MainController"
+      stylesheets="@../styles/style.css">
 
     <HBox fx:id="topBar" alignment="CENTER" spacing="5.0" styleClass="barra-superior">
         <VBox alignment="CENTER" spacing="2.0">

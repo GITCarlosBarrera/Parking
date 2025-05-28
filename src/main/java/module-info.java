@@ -13,4 +13,10 @@ module com.example.parking {
 
     opens com.example.parking to javafx.fxml;
     exports com.example.parking;
+    exports com.example.parking.controllers;
+    opens com.example.parking.controllers to javafx.fxml;
+    exports com.example.parking.models;
+    opens com.example.parking.models to javafx.fxml;
+    exports com.example.parking.application;
+    opens com.example.parking.application to javafx.fxml;
 }

@@ -7,7 +7,7 @@
 <?import javafx.scene.control.Button?>
 
 <VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.parking.PagosController"
+      fx:controller="com.example.parking.controllers.PagosController"
       styleClass="contenedor">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>

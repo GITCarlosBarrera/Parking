@@ -1,9 +1,10 @@
-package com.example.parking;
+package com.example.parking.controllers;
 
-import com.example.parking.vehiculos.VNoResidente;
-import com.example.parking.vehiculos.VOficial;
-import com.example.parking.vehiculos.VResidente;
-import com.example.parking.vehiculos.Vehiculo;
+import com.example.parking.models.RegistroParking;
+import com.example.parking.models.VNoResidente;
+import com.example.parking.models.VOficial;
+import com.example.parking.models.VResidente;
+import com.example.parking.models.Vehiculo;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -25,7 +26,14 @@ import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.Iterator;
 
-public class Controller {
+/**
+ * Controlador principal de la aplicación JavaFX para la gestión de vehículos en el parking.
+ * Gestiona la lógica de la interfaz gráfica, incluyendo la interacción con los elementos visuales
+ * y la manipulación de datos relacionados con los vehículos y sus registros.
+ *
+ * @author GITCarlosBarrera
+ */
+public class MainController {
     @FXML private Label horaLabel;
 
     private final DateTimeFormatter formatoHora = DateTimeFormatter.ofPattern("HH:mm:ss");
@@ -38,6 +46,9 @@ public class Controller {
     private ObservableList<Vehiculo> vehiculosExistentes;
     private ObservableList<RegistroParking> parkingVehiculos;
 
+    /**
+     * Inicializa los elementos de la interfaz gráfica y configura el reloj en tiempo real.
+     */
     @FXML
     private void initialize() {
         Timeline timeline = new Timeline(
@@ -61,6 +72,30 @@ public class Controller {
 
     }
 
+    /**
+     * Abre la ventana para dar de alta un nuevo vehículo.
+     */
+    @FXML
+    private void abrirAlta() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("alta.fxml"));
+            Parent root = loader.load();
+
+            AltaController altaController = loader.getController();
+            altaController.setController(this);
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.getScene().getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * Abre la ventana para registrar la entrada de un vehículo.
+     */
     @FXML
     private void abrirRegistrarEntrada() {
         try {
@@ -80,6 +115,9 @@ public class Controller {
         }
     }
 
+    /**
+     * Abre la ventana para registrar la salida de un vehículo.
+     */
     @FXML
     private void abrirRegistrarSalida() {
         try {
@@ -99,14 +137,17 @@ public class Controller {
         }
     }
 
+    /**
+     * Abre la ventana para mostrar los pagos de los residentes.
+     */
     @FXML
-    private void abrirAlta() {
+    private void mostrarPagosResidentes() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("altaVehiculo.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("pagos.fxml"));
             Parent root = loader.load();
 
-            AltaController altaController = loader.getController();
-            altaController.setController(this);
+            PagosController pagosController = loader.getController();
+            pagosController.setController(this);
 
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
@@ -117,6 +158,9 @@ public class Controller {
         }
     }
 
+    /**
+     * Reinicia los datos de los vehículos oficiales y residentes al comenzar un nuevo mes.
+     */
     @FXML
     private void comenzarMes() {
         Iterator<RegistroParking> it = parkingVehiculos.iterator();
@@ -131,6 +175,9 @@ public class Controller {
         }
     }
 
+    /**
+     * Cambia la lista visible en la interfaz gráfica según la selección del usuario.
+     */
     @FXML
     private void cambiarLista() {
         String seleccion = listaVehiculosCB.getValue();
@@ -156,6 +203,9 @@ public class Controller {
         }
     }
 
+    /**
+     * Elimina un vehículo seleccionado de la lista de vehículos registrados.
+     */
     @FXML
     private void eliminarVehiculo() {
         Vehiculo vehiculoSeleccionado = vehiculosRegistradosLV.getSelectionModel().getSelectedItem();
@@ -164,32 +214,21 @@ public class Controller {
         }
     }
 
-    @FXML
-    private void mostrarPagosResidentes() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("pagosResidentes.fxml"));
-            Parent root = loader.load();
-
-            PagosController pagosController = loader.getController();
-            pagosController.setController(this);
-
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.getScene().getStylesheets().add(getClass().getResource("style.css").toExternalForm());
-            stage.show();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private void actualizarHora() {
-        horaLabel.setText(java.time.LocalTime.now().format(formatoHora));
-    }
-
+    /**
+     * Agrega un vehículo a la lista de vehículos registrados.
+     *
+     * @param v el vehículo a agregar
+     */
     public void agregarVehiculo(Vehiculo v) {
         vehiculosExistentes.add(v);
     }
 
+    /**
+     * Busca un vehículo por su matrícula en la lista de vehículos registrados.
+     *
+     * @param matricula la matrícula del vehículo a buscar
+     * @return el vehículo encontrado o null si no existe
+     */
     public Vehiculo buscarVehiculo(String matricula) {
         for (Vehiculo v : vehiculosExistentes) {
             if (v.getMatricula().equals(matricula)) return v;
@@ -197,6 +236,12 @@ public class Controller {
         return null;
     }
 
+    /**
+     * Busca un registro de parking por la matrícula del vehículo.
+     *
+     * @param matricula la matrícula del vehículo
+     * @return el índice del registro encontrado o -1 si no existe
+     */
     public int buscarRegistroParking(String matricula) {
         int cont = 0;
         for (RegistroParking rp : parkingVehiculos) {
@@ -209,6 +254,11 @@ public class Controller {
         return -1;
     }
 
+    /**
+     * Registra la entrada de un vehículo al parking.
+     *
+     * @param rp el registro de parking a agregar
+     */
     public void registrarEntrada(RegistroParking rp) {
         if (rp.getHoraSalida() == null) {
             parkingVehiculos.add(rp);
@@ -221,6 +271,11 @@ public class Controller {
         }
     }
 
+    /**
+     * Registra la salida de un vehículo del parking.
+     *
+     * @param index el índice del registro de parking
+     */
     public void registrarSalida(int index) {
         RegistroParking rp = parkingVehiculos.get(index);
         rp.setHoraSalida(LocalDateTime.now());
@@ -244,6 +299,12 @@ public class Controller {
 
     }
 
+    /**
+     * Crea un informe en formato CSV con los datos de los vehículos residentes.
+     *
+     * @param nombre el nombre del archivo a generar
+     * @throws IOException si ocurre un error al escribir el archivo
+     */
     public void crearInforme(String nombre) throws IOException {
         File f = new File(nombre + ".csv");
         FileWriter fw = new FileWriter(f);
@@ -265,5 +326,12 @@ public class Controller {
         }
 
         fw.close();
+    }
+
+    /**
+     * Actualiza la hora mostrada en la interfaz gráfica.
+     */
+    private void actualizarHora() {
+        horaLabel.setText(java.time.LocalTime.now().format(formatoHora));
     }
 }
