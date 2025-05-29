@@ -11,8 +11,6 @@ module com.example.parking {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
 
-    opens com.example.parking to javafx.fxml;
-    exports com.example.parking;
     exports com.example.parking.controllers;
     opens com.example.parking.controllers to javafx.fxml;
     exports com.example.parking.models;

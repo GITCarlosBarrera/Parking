@@ -23,9 +23,9 @@ public class MainApp extends javafx.application.Application {
      */
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("main.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("/com/example/parking/views/main.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 620, 440);
-        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/com/example/parking/styles/style.css").toExternalForm());
         stage.setTitle("480 PARKING");
         stage.setScene(scene);
         stage.show();
